@@ -1,6 +1,6 @@
 <template>
     <div>
-        <heading class="mb-6">Temply Theme Manager</heading>
+        <heading class="mb-6">{{ __('Temply Theme Manager') }}</heading>
 
         <div class="w-full flex mb-8 shadow-md" v-for="(theme, index) in themes" :class="{ 'border-r-8 border-success': theme.id == activeTheme.id }" :key="index">
             <div class="h-64 w-64 flex-none bg-cover rounded-l text-center overflow-hidden" :style="'background-image: url(' + theme.photo + ')'" title="Woman holding a mug"></div>
@@ -20,10 +20,10 @@
                                 @mouseout="hideButton(pallete)"
                             >
                                 <template v-if="pallete.id == activePallete.id">
-                                    <p class="font-bold button-h-8">Selected</p>
+                                    <p class="font-bold button-h-8">{{ __('Selected') }}</p>
                                 </template>
                                 <template v-else>
-                                    <button v-if="pallete.active" @click="check(theme, pallete)" class="btn btn-default btn-primary button-h-8">Select Pallete</button>
+                                    <button v-if="pallete.active" @click="check(theme, pallete)" class="btn btn-default btn-primary button-h-8">{{ __('Select Pallete') }}</button>
                                     <div v-else class="rounded w-8 h-8 mx-1" :style="'background-color:' + color.color" v-for="(color, ind) in pallete.colors" :key="pallete.id + '_' + ind"></div>
                                 </template>
                             </div>
@@ -101,7 +101,7 @@ export default {
             api.setTheme(this.selectedTheme.id, this.selectedPallete.id).then(() => {
                 this.getData();
                 this.modalConfirm = false;
-                this.$toasted.show(this.__('¡Tema cambiado correctamente!'), { type: 'success' });
+                this.$toasted.show(this.__('Theme selected successfully!'), { type: 'success' });
             });
         },
     },
