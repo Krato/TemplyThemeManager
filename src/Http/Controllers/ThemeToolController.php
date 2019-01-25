@@ -16,15 +16,15 @@ class ThemeToolController extends Controller
     /**
      * @var mixed
      */
-    protected $palleteModel;
+    protected $paletteModel;
 
     public function __construct()
     {
         $themeClass = config('temply.model_theme');
-        $palleteClass = config('temply.model_pallete');
+        $paletteClass = config('temply.model_palette');
 
         $this->themeModel = new $themeClass();
-        $this->palleteModel = new $palleteClass();
+        $this->paletteModel = new $paletteClass();
     }
 
     public function getThemes()
@@ -33,7 +33,7 @@ class ThemeToolController extends Controller
             'themes' => $this->themeModel->availables(),
             'active' => [
                 'theme'   => auth()->user()->currentTheme,
-                'pallete' => auth()->user()->currentPallete,
+                'palette' => auth()->user()->currentPalette,
             ],
         ]);
     }
@@ -44,9 +44,9 @@ class ThemeToolController extends Controller
     public function setTheme(Request $request)
     {
         $theme = $this->themeModel->find($request->theme);
-        $pallete = $this->palleteModel->find($request->pallete);
+        $palette = $this->paletteModel->find($request->palette);
 
-        event(new ThemeActivated($theme, $pallete));
+        event(new ThemeActivated($theme, $palette));
 
         return response()->json([
             'success' => true,

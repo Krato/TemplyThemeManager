@@ -11,7 +11,7 @@
 
 	```php
 	'model_theme'   => App\Theme::class, // Theme Model Class
-	'model_pallete' => App\Pallete::class, // Pallete Model Class
+	'model_palette' => App\Palette::class, // Palette Model Class
 	```
 3. User model should have this attributes:
 
@@ -21,9 +21,9 @@
 	    return \App\Theme::first();
 	}
 
-	public function getCurrentPalleteAttribute()
+	public function getCurrentPaletteAttribute()
 	{
-	    return \App\Pallete::first();
+	    return \App\Palette::first();
 	}
 	```
 
@@ -33,6 +33,6 @@
         'App\Listeners\YourListener',
     ],
     ```
-There are two public properties: Theme and Pallete. You can access through: `$event->theme` or `$event->pallete`.
+There are two public properties: Theme and Palette. You can access through: `$event->theme` or `$event->palette`.
 
 

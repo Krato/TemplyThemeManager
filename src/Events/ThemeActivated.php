@@ -2,7 +2,6 @@
 
 namespace Infinety\TemplyThemeManager\Events;
 
-use App\Order;
 use Illuminate\Queue\SerializesModels;
 
 class ThemeActivated
@@ -17,7 +16,7 @@ class ThemeActivated
     /**
      * @var mixed
      */
-    public $pallete;
+    public $palette;
 
     /**
      * Create a new event instance.
@@ -25,9 +24,9 @@ class ThemeActivated
      * @param  \App\Order  $order
      * @return void
      */
-    public function __construct($theme, $pallete)
+    public function __construct($theme, $palette)
     {
         $this->theme = $theme;
-        $this->pallete = $pallete;
+        $this->palette = $palette;
     }
 }
